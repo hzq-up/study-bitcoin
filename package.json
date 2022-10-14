@@ -1,0 +1,18 @@
+{
+  "name": "study_bitcoin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hzq-up/study-bitcoin.git"
+  },
+  "author": "andyhu",
+  "license": "ISC",
+  "dependencies": {
+    "crypto-js": "^4.1.1"
+  }
+}
