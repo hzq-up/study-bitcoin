@@ -90,15 +90,15 @@ class BlockChain {
     const lastBlock = this.chain[this.chain.length - 1];
     return lastBlock;
   }
-  // 把区块链接到链上
-  linkBlockToChain(newBlock) {
-    // 1.把前一个区块的hash赋值给当前区块的 prevHash
-    // 2.从新计算当前区块的hash
-    newBlock.prevHash = this.getLastBlock().hash;
-    // newBlock.hash = newBlock.computeHash();
-    newBlock.mine(this.difficulty);
-    this.chain.push(newBlock);
-  }
+  // // 把区块链接到链上
+  // linkBlockToChain(newBlock) {
+  //   // 1.把前一个区块的hash赋值给当前区块的 prevHash
+  //   // 2.从新计算当前区块的hash
+  //   newBlock.prevHash = this.getLastBlock().hash;
+  //   // newBlock.hash = newBlock.computeHash();
+  //   newBlock.mine(this.difficulty);
+  //   this.chain.push(newBlock);
+  // }
   verifyChain() {
     // 验证第一个区块
     if (this.chain.length === 1) {
