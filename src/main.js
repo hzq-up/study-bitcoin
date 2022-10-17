@@ -5,16 +5,39 @@ class Block {
     this.prevHash = prevHash;
     this.data = data;
     this.hash = this.computeHash();
+    this.nonce = 1;
   }
   computeHash() {
-    return sha256(this.data + this.prevHash).toString();
+    return sha256(this.data + this.prevHash + this.nonce).toString();
+  }
+  getAnswer(difficulty) {
+    let answer = '';
+    for (let i = 0; i < difficulty; i++) {
+      answer += '0';
+    }
+    return answer;
+  }
+  // 挖矿
+  mine(difficulty) {
+    while (true) {
+      this.hash = this.computeHash();
+      if (this.hash.substring(0, difficulty) !== this.getAnswer(difficulty)) {
+        this.nonce++;
+        this.hash = this.computeHash();
+      } else {
+        break;
+      }
+    }
+    console.log('挖矿结束！', this.hash)
   }
 }
 
 // 区块的链上生成第一个区块
 class BlockChain {
-  constructor() {
-    this.chain = [this.firstBlock()]
+  constructor(difficulty) {
+    this.chain = [this.firstBlock()];
+    // 挖矿的难度
+    this.difficulty = difficulty;
   }
   //生成第一个区块
   firstBlock() {
@@ -31,7 +54,8 @@ class BlockChain {
     // 1.把前一个区块的hash赋值给当前区块的 prevHash
     // 2.从新计算当前区块的hash
     newBlock.prevHash = this.getLastBlock();
-    newBlock.hash = newBlock.computeHash();
+    // newBlock.hash = newBlock.computeHash();
+    newBlock.mine(this.difficulty);
     this.chain.push(newBlock)
   }
   verifyChain() {
@@ -68,16 +92,16 @@ class BlockChain {
 // console.log(bitChain)
 // console.log(bitChain.verifyChain())
 
-const bitChain = new BlockChain();
+const bitChain = new BlockChain(4);
 
 const block1 = new Block('交易数据1', '');
 bitChain.linkBlockToChain(block1)
 const block2 = new Block('交易数据2', '');
 bitChain.linkBlockToChain(block2)
 
-// 测试篡改数据
-bitChain.chain[1].data = '篡改交易数据';
-// 测试篡改hash
-bitChain.chain[1].hash = bitChain.chain[1].computeHash();
+// // 测试篡改数据
+// bitChain.chain[1].data = '篡改交易数据';
+// // 测试篡改hash
+// bitChain.chain[1].hash = bitChain.chain[1].computeHash();
 console.log(bitChain)
-console.log(bitChain.verifyChain())
+// console.log(bitChain.verifyChain())
