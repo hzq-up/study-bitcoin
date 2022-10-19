@@ -4,9 +4,9 @@
 # 功能(Features)
 * 区块链的验证(JavaScript implementation of blockchain to prevent data from being tampered with)
 * 工作量证明机制的简单实现(Simple implementation of proof-of-work mechanism)
-* 转账(transfer)
+* 转账(Transaction)
 * 挖矿的简单实现(Mine)
-* 生成密钥对(Generate key pair)
+* 生成密钥对(Generate keyPair)
 
 # 开始(Get Started)
 
