@@ -37,7 +37,7 @@ myCoin.addTransaction(transaction);
 ## 挖矿(Mine)
 
 ```JavaScript
-my.mineTransactionPool('addr3');
+myCoin.mineTransactionPool('addr3');
 ```
 
 # 待完善(TODO)
