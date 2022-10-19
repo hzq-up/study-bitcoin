@@ -27,7 +27,7 @@ console.log("publicKey", KeyPair.getPublic("hex"));
 ```JavaScript
 const myCoin = new chain();
 ```
-## 转账(Transactio)
+## 转账(Transaction)
 
 ```JavaScript
 const transaction = new Transaction("addrSender1", "addrReceiver1", 10);
