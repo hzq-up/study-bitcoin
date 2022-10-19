@@ -16,10 +16,10 @@ const ecLib = require("elliptic").ec;
 const ec = new ecLib("secp256k1"); // curve name
 const sha256 = require("crypto-js/sha256");
 // 生成密钥对 
-const KeyPair = ec.genKeyPair();
+const keyPair = ec.genKeyPair();
 // 拿到 hex string 格式的私钥和公钥
-console.log("privateKey", KeyPair.getPrivate("hex"));
-console.log("publicKey", KeyPair.getPublic("hex"));
+console.log("privateKey", keyPair.getPrivate("hex"));
+console.log("publicKey", keyPair.getPublic("hex"));
 
 ```
 ## 创建区块链(Create Blockchain)
